@@ -29,7 +29,6 @@
     <v-toolbar
       app
       :clipped-left="clipped"
-      :scroll-off-screen=true
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
@@ -207,6 +206,43 @@
         </v-container>
       </section>
     </v-content>
+    <v-content v-if="isAttractions">
+      <section>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-text-field
+              label="Search by name or location"
+              single-line
+              append-icon="search"
+              v-model="search"
+              @keyup="filterAttractions"
+              ></v-text-field>
+            </v-flex>
+            <v-flex xs12 sm6 md4 lg3 xl2 v-for="item in filteredAttractions" :key="item.title">
+              <v-card>
+                <v-card-media
+                  v-bind:src="item.image"
+                  height="200px"
+                >
+                </v-card-media>
+                <v-card-title primary-title>
+                  <div class="text-xs-left">
+                    <div class="headline">{{item.title}}</div>
+                    <span class="grey--text">{{item.location}}</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat>Share</v-btn>
+                  <v-btn flat color="primary">Details</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </section>
+    </v-content>
     <v-dialog v-model="loginDialog" max-width="290">
       <v-card>
         <v-card-title class="headline">Use Google's location service?</v-card-title>
@@ -319,6 +355,50 @@ export default {
           disabled: false
         }
       ],
+      attractions: [
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        }
+      ],
+      filteredAttractions: [
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        },
+        {
+          title: 'Mount Fuji',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/fuji.jpg')
+        }
+      ],
       miniVariant: true,
       right: true,
       rightDrawer: false,
@@ -329,13 +409,13 @@ export default {
       isAccomodation: false,
       isTravel: false,
       loginDialog: false,
-      signUpDialog: false
+      signUpDialog: false,
+      search: ''
     };
   },
   methods: {
     test: function () {
-      this.isHome = !(this.isHome);
-      alert(this.isHome);
+      alert(this.search);
     },
     onClickHome: function () {
       this.isHome = true;
@@ -343,7 +423,6 @@ export default {
       this.isResturants = false;
       this.isAccomodation = false;
       this.isTravel = false;
-      
       this.items[0].disabled = true;
       this.items[1].disabled = false;
       this.items[2].disabled = false;
@@ -356,7 +435,6 @@ export default {
       this.isResturants = false;
       this.isAccomodation = false;
       this.isTravel = false;
-      
       this.items[0].disabled = false;
       this.items[1].disabled = true;
       this.items[2].disabled = false;
@@ -369,7 +447,6 @@ export default {
       this.isResturants = true;
       this.isAccomodation = false;
       this.isTravel = false;
-      
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = true;
@@ -382,7 +459,6 @@ export default {
       this.isResturants = false;
       this.isAccomodation = true;
       this.isTravel = false;
-      
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = false;
@@ -395,12 +471,16 @@ export default {
       this.isResturants = false;
       this.isAccomodation = false;
       this.isTravel = true;
-      
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = false;
       this.items[3].disabled = false;
       this.items[4].disabled = true;
+    },
+    filterAttractions: function () {
+      this.filteredAttractions = this.attractions.filter(post => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase());
+      });
     }
   },
   name: 'App'
