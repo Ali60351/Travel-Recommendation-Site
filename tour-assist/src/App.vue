@@ -216,7 +216,7 @@
               single-line
               append-icon="search"
               v-model="search"
-              @keyup="filterAttractions"
+              @keyup="filterResults"
               ></v-text-field>
             </v-flex>
             <v-flex xs12 sm6 md4 lg3 xl2 v-for="item in filteredAttractions" :key="item.title">
@@ -230,6 +230,321 @@
                   <div class="text-xs-left">
                     <div class="headline">{{item.title}}</div>
                     <span class="grey--text">{{item.location}}</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat>Share</v-btn>
+                  <v-btn flat color="primary">Details</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </section>
+    </v-content>
+    <v-content v-if="isRestaurants">
+      <section>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-text-field
+              label="Search by name or location"
+              single-line
+              append-icon="search"
+              v-model="search"
+              @keyup="filterResults"
+              ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-expansion-panel expand>
+                <v-expansion-panel-content>
+                  <div slot="header">Cuisine</div>
+                  <v-card>
+                    <v-layout row wrap>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="Thai"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="Thai"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="Japanese"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="Japanese"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="Turkish"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="Turkish"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="Italian"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="Italian"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="French"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="French"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="SE Asian"
+                          v-model="restaurantFilters.cuisine"
+                          @change="filterResults"
+                          value="SE Asian"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                    </v-layout>
+                  </v-card>
+                </v-expansion-panel-content>
+                <v-expansion-panel-content>
+                  <div slot="header">Features</div>
+                  <v-card>
+                    <v-layout row wrap>
+                      <v-flex xs12 sm6 md4 lg3 xl2>
+                        <v-checkbox
+                          label="Delivery"
+                          v-model="restaurantFilters.features"
+                          @change="filterResults"
+                          value="Delivery"
+                          hide-details
+                        ></v-checkbox>
+                      </v-flex>
+                    </v-layout>
+                  </v-card>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-flex>
+            <v-flex xs12 sm6 md4 lg3 xl2 v-for="item in filteredRestaurants" :key="item.title">
+              <v-card>
+                <v-card-media
+                  v-bind:src="item.image"
+                  height="200px"
+                >
+                </v-card-media>
+                <v-card-title primary-title>
+                  <div class="text-xs-left">
+                    <div class="headline">{{item.title}}</div>
+                    <span class="grey--text">{{item.location}}</span>
+                    <br/>
+                    <span class="grey--text" v-for="cuisine in item.cuisine" :key="cuisine">{{cuisine + ' '}}</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat>Share</v-btn>
+                  <v-btn flat color="primary">Details</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </section>
+    </v-content>
+    <v-content v-if="isAccommodation">
+      <section>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-text-field
+              label="Search by name or location"
+              single-line
+              append-icon="search"
+              v-model="search"
+              @keyup="filterResults"
+              ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-expansion-panel expand>
+                <v-expansion-panel-content>
+                  <div slot="header">Price</div>
+                  <v-card>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs10>
+                          <v-slider step="1000" @mouseup="filterResults" label="Max Price" :max="50000" v-model="accommodationFilters.price"></v-slider>
+                        </v-flex>
+                        <v-flex xs2>
+                          <v-text-field @keyup="filterResults" disabled="true" v-model="accommodationFilters.price"></v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                </v-expansion-panel-content>
+                <v-expansion-panel-content>
+                  <div slot="header">Features</div>
+                  <v-card>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="WiFi"
+                            v-model="accommodationFilters.features"
+                            @change="filterResults"
+                            value="WiFi"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-flex>
+            <v-flex xs12 sm6 md4 lg3 xl2 v-for="item in filteredAccommodation" :key="item.title">
+              <v-card>
+                <v-card-media
+                  v-bind:src="item.image"
+                  height="200px"
+                >
+                </v-card-media>
+                <v-card-title primary-title>
+                  <div class="text-xs-left">
+                    <div class="headline">{{item.title}}</div>
+                    <div class="grey--text">{{item.location}}</div>
+                    <span class="grey--text">{{'Price: Rs' + item.price}}</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat>Share</v-btn>
+                  <v-btn flat color="primary">Details</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </section>
+    </v-content>
+    <v-content v-if="isTravel">
+      <section>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-text-field
+              label="Search by name or location"
+              single-line
+              append-icon="search"
+              v-model="search"
+              @keyup="filterResults"
+              ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-expansion-panel expand>
+                <v-expansion-panel-content>
+                  <div slot="header">Price</div>
+                  <v-card>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs10>
+                          <v-slider step="10000" @mouseup="filterResults" label="Max Price" :max="200000" v-model="travelFilters.price"></v-slider>
+                        </v-flex>
+                        <v-flex xs2>
+                          <v-text-field @keyup="filterResults" disabled="true" v-model="travelFilters.price"></v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                </v-expansion-panel-content>
+                <v-expansion-panel-content>
+                  <div slot="header">Class</div>
+                  <v-card>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="First Class"
+                            v-model="travelFilters.class"
+                            @change="filterResults"
+                            value="First Class"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Business"
+                            v-model="travelFilters.class"
+                            @change="filterResults"
+                            value="Business"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Economy"
+                            v-model="travelFilters.class"
+                            @change="filterResults"
+                            value="Economy"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                </v-expansion-panel-content>
+                <v-expansion-panel-content>
+                  <div slot="header">Airline</div>
+                  <v-card>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Emirates Airlines"
+                            v-model="travelFilters.airline"
+                            @change="filterResults"
+                            value="Emirates Airlines"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Qatar Airlines"
+                            v-model="travelFilters.airline"
+                            @change="filterResults"
+                            value="Qatar Airlines"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-flex>
+            <v-flex xs12 sm6 md4 lg3 xl2 v-for="item in filteredTravel" :key="item.title">
+              <v-card>
+                <v-card-media
+                  v-bind:src="item.image"
+                  height="200px"
+                >
+                </v-card-media>
+                <v-card-title primary-title>
+                  <div class="text-xs-left">
+                    <div class="white--text">{{item.source + ' - ' + item.destination}}</div>
+                    <div class="grey--text">{{item.airline}}</div>
+                    <span class="grey--text">{{'Price: Rs' + item.price}}</span>
                   </div>
                 </v-card-title>
                 <v-card-actions>
@@ -344,8 +659,8 @@ export default {
         },
         {
           icon: 'local_hotel',
-          title: 'Accomodation',
-          onClick: this.onClickAccomodation,
+          title: 'Accommodation',
+          onClick: this.onClickAccommodation,
           disabled: false
         },
         {
@@ -362,55 +677,155 @@ export default {
           image: require('@/assets/fuji.jpg')
         },
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Hiroshima Peace Memorial',
+          location: 'Hiroshima, Japan',
+          image: require('@/assets/hiroshima_peace_memorial.jpg')
         },
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Osaka Aquarium',
+          location: 'Osaka, Japan',
+          image: require('@/assets/Osaka_Aquarium.jpg')
         },
         {
-          title: 'Mount Fuji',
+          title: 'Tokyo Skytree',
           location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          image: require('@/assets/tokyo_skytree.jpg')
+        },
+        {
+          title: 'Tokyo Tower',
+          location: 'Tokyo, Japan',
+          image: require('@/assets/tokyo_tower.jpg')
         }
       ],
-      filteredAttractions: [
+      restaurants: [
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Pai Thai',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          cuisine: ['Thai', 'SE Asian'],
+          image: require('@/assets/paithai.jpg')
         },
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Nusr-Et',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          cuisine: ['Turkish'],
+          image: require('@/assets/nusret.jpg')
         },
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Zuma',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          cuisine: ['Japanese'],
+          image: require('@/assets/zuma.jpg')
         },
         {
-          title: 'Mount Fuji',
-          location: 'Tokyo, Japan',
-          image: require('@/assets/fuji.jpg')
+          title: 'Solo Bistronomia & Vino Bar',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          cuisine: ['Italian'],
+          image: require('@/assets/solo.jpg')
+        },
+        {
+          title: 'La Petite Maison',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          cuisine: ['French'],
+          image: require('@/assets/lapetit.jpg')
         }
       ],
+      accommodation: [
+        {
+          title: 'Holiday Inn Express Dubai Airport',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          price: 8500,
+          image: require('@/assets/Holiday_Inn.png')
+        },
+        {
+          title: 'Crowne Plaza Dubai',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          price: 16000,
+          image: require('@/assets/Crowne_Plaza_Dubai.png')
+        },
+        {
+          title: 'Hawthorn Suites',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          price: 17000,
+          image: require('@/assets/Hawthorn_Suites.png')
+        },
+        {
+          title: 'Melia Dubai Hotel',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          price: 11000,
+          image: require('@/assets/Melia_Dubai_Hotel.png')
+        },
+        {
+          title: 'Gloria Hotel',
+          location: 'Dubai, United Arab Emirates (UAE)',
+          features: [],
+          price: 19000,
+          image: require('@/assets/Gloria_Hotel.png')
+        }
+      ],
+      travel: [
+        {
+          source: 'Lahore, Pakistan',
+          destination: 'Tokyo, Japan',
+          airline: 'Emirates Airlines',
+          class: 'Business',
+          price: 50000,
+          image: require('@/assets/emirates.png')
+        },
+        {
+          source: 'Lahore, Pakistan',
+          destination: 'Tokyo, Japan',
+          airline: 'Qatar Airlines',
+          class: 'First Class',
+          price: 100000,
+          image: require('@/assets/qatar.png')
+        },
+        {
+          source: 'Lahore, Pakistan',
+          destination: 'Dubai, United Arab Emirates (UAE)',
+          airline: 'Emirates Airlines',
+          class: 'Economy',
+          price: 150000,
+          image: require('@/assets/emirates.png')
+        }
+      ],
+      filteredTravel: [],
+      filteredAccommodation: [],
+      filteredRestaurants: [],
+      filteredAttractions: [],
       miniVariant: true,
       right: true,
       rightDrawer: false,
       title: 'Tour Assist',
       isHome: true,
       isAttractions: false,
-      isResturants: false,
-      isAccomodation: false,
+      isRestaurants: false,
+      isAccommodation: false,
       isTravel: false,
       loginDialog: false,
       signUpDialog: false,
-      search: ''
+      search: '',
+      restaurantFilters: {
+        cuisine: [],
+        features: []
+      },
+      accommodationFilters: {
+        price: 50000,
+        features: []
+      },
+      travelFilters: {
+        price: 200000,
+        class: [],
+        airline: []
+      }
     };
   },
   methods: {
@@ -420,8 +835,8 @@ export default {
     onClickHome: function () {
       this.isHome = true;
       this.isAttractions = false;
-      this.isResturants = false;
-      this.isAccomodation = false;
+      this.isRestaurants = false;
+      this.isAccommodation = false;
       this.isTravel = false;
       this.items[0].disabled = true;
       this.items[1].disabled = false;
@@ -432,55 +847,125 @@ export default {
     onClickAttractions: function () {
       this.isHome = false;
       this.isAttractions = true;
-      this.isResturants = false;
-      this.isAccomodation = false;
+      this.isRestaurants = false;
+      this.isAccommodation = false;
       this.isTravel = false;
       this.items[0].disabled = false;
       this.items[1].disabled = true;
       this.items[2].disabled = false;
       this.items[3].disabled = false;
       this.items[4].disabled = false;
+      this.filteredAttractions = this.attractions;
     },
     onClickResturants: function () {
       this.isHome = false;
       this.isAttractions = false;
-      this.isResturants = true;
-      this.isAccomodation = false;
+      this.isRestaurants = true;
+      this.isAccommodation = false;
       this.isTravel = false;
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = true;
       this.items[3].disabled = false;
       this.items[4].disabled = false;
+      this.filteredRestaurants = this.restaurants;
     },
-    onClickAccomodation: function () {
+    onClickAccommodation: function () {
       this.isHome = false;
       this.isAttractions = false;
-      this.isResturants = false;
-      this.isAccomodation = true;
+      this.isRestaurants = false;
+      this.isAccommodation = true;
       this.isTravel = false;
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = false;
       this.items[3].disabled = true;
       this.items[4].disabled = false;
+      this.filteredAccommodation = this.accommodation;
     },
     onClickTravel: function () {
       this.isHome = false;
       this.isAttractions = false;
-      this.isResturants = false;
-      this.isAccomodation = false;
+      this.isRestaurants = false;
+      this.isAccommodation = false;
       this.isTravel = true;
       this.items[0].disabled = false;
       this.items[1].disabled = false;
       this.items[2].disabled = false;
       this.items[3].disabled = false;
       this.items[4].disabled = true;
+      this.filteredTravel = this.travel;
     },
-    filterAttractions: function () {
-      this.filteredAttractions = this.attractions.filter(post => {
-        return post.title.toLowerCase().includes(this.search.toLowerCase());
-      });
+    filterResults: function () {
+      if (this.isAttractions) {
+        this.filteredAttractions = this.attractions.filter(post => {
+          if (post.title.toLowerCase().includes(this.search.toLowerCase())) {
+            return true;
+          }
+
+          if (post.location.toLowerCase().includes(this.search.toLowerCase())) {
+            return true;
+          }
+
+          return false;
+        });
+      }
+
+      if (this.isRestaurants) {
+        this.filteredRestaurants = this.restaurants.filter(post => {
+          if (this.restaurantFilters.cuisine.some(r => post.cuisine.includes(r)) || this.restaurantFilters.cuisine.length === 0) {
+            if (this.restaurantFilters.features.some(r => post.features.includes(r)) || this.restaurantFilters.features.length === 0) {
+              if (post.title.toLowerCase().includes(this.search.toLowerCase())) {
+                return true;
+              }
+
+              if (post.location.toLowerCase().includes(this.search.toLowerCase())) {
+                return true;
+              }
+            }
+          }
+
+          return false;
+        });
+      }
+
+      if (this.isAccommodation) {
+        this.filteredAccommodation = this.accommodation.filter(post => {
+          if (this.accommodationFilters.price > post.price) {
+            if (this.accommodationFilters.features.some(r => post.features.includes(r)) || this.accommodationFilters.features.length === 0) {
+              if (post.title.toLowerCase().includes(this.search.toLowerCase())) {
+                return true;
+              }
+
+              if (post.location.toLowerCase().includes(this.search.toLowerCase())) {
+                return true;
+              }
+            }
+          }
+
+          return false;
+        });
+      }
+
+      if (this.isTravel) {
+        this.filteredTravel = this.travel.filter(post => {
+          if (this.travelFilters.price > post.price) {
+            if (this.travelFilters.class.includes(post.class) || this.travelFilters.class.length === 0) {
+              if (this.travelFilters.airline.includes(post.airline) || this.travelFilters.airline.length === 0) {
+                if (post.source.toLowerCase().includes(this.search.toLowerCase())) {
+                  return true;
+                }
+
+                if (post.destination.toLowerCase().includes(this.search.toLowerCase())) {
+                  return true;
+                }
+              }
+            }
+          }
+
+          return false;
+        });
+      }
     }
   },
   name: 'App'
