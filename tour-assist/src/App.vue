@@ -10,7 +10,7 @@
       app
     >
       <v-list>
-        <v-list-tile
+        <v-list-tile ripple
           value="true"
           v-for="item in items"
           :key="item.title"
@@ -21,7 +21,7 @@
             <v-icon dark v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title class="white--text" v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title color="primary" v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -69,15 +69,7 @@
           >
             <img :src="require('@/assets/logo.png')" height="150px" alt="Vuetify.js">
             <h1 class="white--text mb-2 display-1 text-xs-center">Tour Assist</h1>
-            <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
-            <v-btn
-              class="blue lighten-2 mt-5"
-              dark
-              large
-              v-on:click="test"
-            >
-              Get Started
-            </v-btn>
+            <div class="subheading mb-3 text-xs-center">Supercharge your Tours!</div>
           </v-layout>
         </v-parallax>
       </section>
@@ -90,9 +82,9 @@
         >
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">The best way to start developing</h2>
+              <h2 class="headline">The best way to start traveling</h2>
               <span class="subheading">
-                Cras facilisis mi vitae nunc 
+                Convenient and efficient
               </span>
             </div>
           </v-flex>
@@ -102,15 +94,13 @@
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
+                      <v-icon x-large class="blue--text text--lighten-2">attach_money</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Material Design</div>
+                      <div class="headline text-xs-center">Cheap</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      Find the cheapest deals on meals and rest places you love
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -120,12 +110,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fast development</div>
+                      <div class="headline">Fast</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      Grab the deals from your favorite restaurants and hotels before anyone else
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -135,12 +123,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Completely Open Sourced</div>
+                      <div class="headline text-xs-center">Customizable</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      Find hotels and restaurants near you that suit all your needs and desires 
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -152,16 +138,8 @@
       <section>
         <v-parallax :src="require('@/assets/2.jpg')" height="400">
           <v-layout column align-center justify-center>
-            <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
-            <em>Kick-start your application today</em>
-            <v-btn
-              class="blue lighten-2 mt-5"
-              dark
-              large
-              href="/pre-made-themes"
-            >
-              Get Started
-            </v-btn>
+            <div class="headline white--text mb-3 text-xs-center">Planning trips has never been easier</div>
+            <em>Kick-start your journey today</em>
           </v-layout>
         </v-parallax>
       </section>
@@ -174,9 +152,7 @@
                   <div class="headline">Company info</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                  Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                  We are always working our hardest to provide our users with the cheapest deals and help you explore the beautiful world around you.
                 </v-card-text>
               </v-card>
             </v-flex>
@@ -186,7 +162,7 @@
                   <div class="headline">Contact us</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
+                  Feel free to contact us if you have some suggestions or queries.
                 </v-card-text>
                 <v-list class="transparent">
                   <v-list-tile>
@@ -194,7 +170,7 @@
                       <v-icon class="blue--text text--lighten-2">phone</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>777-867-5309</v-list-tile-title>
+                      <v-list-tile-title>111-222-3333</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
@@ -202,7 +178,7 @@
                       <v-icon class="blue--text text--lighten-2">place</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>Chicago, US</v-list-tile-title>
+                      <v-list-tile-title>Lahore, Pakistan</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
@@ -210,7 +186,7 @@
                       <v-icon class="blue--text text--lighten-2">email</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>john@vuetifyjs.com</v-list-tile-title>
+                      <v-list-tile-title>ali60351@tourassist.com</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                 </v-list>
@@ -220,7 +196,7 @@
         </v-container>
       </section>
     </v-content>
-    <v-content v-if="isAttractions">
+    <v-content class="attractions" v-if="isAttractions">
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -257,7 +233,7 @@
         </v-container>
       </section>
     </v-content>
-    <v-content v-if="isRestaurants">
+    <v-content class="restaurants" v-if="isRestaurants">
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -272,7 +248,7 @@
             </v-flex>
             <v-flex xs12>
               <v-expansion-panel expand>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Cuisine</div>
                   <v-card>
                     <v-container>
@@ -335,7 +311,7 @@
                     </v-container>
                   </v-card>
                 </v-expansion-panel-content>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Features</div>
                   <v-card>
                     <v-container>
@@ -381,7 +357,7 @@
         </v-container>
       </section>
     </v-content>
-    <v-content v-if="isAccommodation">
+    <v-content class="accommodation" v-if="isAccommodation">
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -396,7 +372,7 @@
             </v-flex>
             <v-flex xs12>
               <v-expansion-panel expand>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Price</div>
                   <v-card>
                     <v-container>
@@ -411,7 +387,7 @@
                     </v-container>
                   </v-card>
                 </v-expansion-panel-content>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Features</div>
                   <v-card>
                     <v-container>
@@ -456,7 +432,7 @@
         </v-container>
       </section>
     </v-content>
-    <v-content v-if="isTravel">
+    <v-content class="travel" v-if="isTravel">
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -471,7 +447,7 @@
             </v-flex>
             <v-flex xs12>
               <v-expansion-panel expand>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Price</div>
                   <v-card>
                     <v-container>
@@ -486,7 +462,7 @@
                     </v-container>
                   </v-card>
                 </v-expansion-panel-content>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Class</div>
                   <v-card>
                     <v-container>
@@ -522,7 +498,7 @@
                     </v-container>
                   </v-card>
                 </v-expansion-panel-content>
-                <v-expansion-panel-content>
+                <v-expansion-panel-content ripple>
                   <div slot="header">Airline</div>
                   <v-card>
                     <v-container>
@@ -750,7 +726,7 @@
             <v-layout>
               <v-flex xs12>
                 <v-expansion-panel expand>
-                  <v-expansion-panel-content>
+                  <v-expansion-panel-content ripple>
                     <div slot="header">Features</div>
                     <v-card>
                       <v-container>
@@ -837,6 +813,12 @@ export default {
           title: 'Travel',
           onClick: this.onClickTravel,
           disabled: false
+        },
+        {
+          icon: 'invert_colors',
+          title: 'Invert Theme',
+          onClick: this.onClickInvert,
+          disabled: false
         }
       ],
       attractions: [
@@ -870,7 +852,7 @@ export default {
         {
           title: 'Pai Thai',
           location: 'Dubai, United Arab Emirates (UAE)',
-          features: [],
+          features: ['Delivery'],
           cuisine: ['Thai', 'SE Asian'],
           image: require('@/assets/paithai.jpg')
         },
@@ -914,7 +896,7 @@ export default {
         {
           title: 'Crowne Plaza Dubai',
           location: 'Dubai, United Arab Emirates (UAE)',
-          features: [],
+          features: ['WiFi'],
           price: 16000,
           image: require('@/assets/Crowne_Plaza_Dubai.png')
         },
@@ -1140,8 +1122,49 @@ export default {
           return false;
         });
       }
+    },
+    onClickInvert: function () {
+      var e = document.getElementById('app');
+
+      if (e.classList[1] === 'theme--dark') {
+        e.classList.remove('theme--dark');
+        e.classList.add('theme--light');
+      } else {
+        e.classList.remove('theme--light');
+        e.classList.add('theme--dark');
+      }
     }
   },
   name: 'App'
 };
 </script>
+
+<style>
+  .attractions {
+    background-image: url('./assets/1b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .restaurants {
+    background-image: url('./assets/2b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .accommodation {
+    background-image: url('./assets/3b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .travel {
+    background-image: url('./assets/5b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+</style>
