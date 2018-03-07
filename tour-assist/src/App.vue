@@ -40,6 +40,20 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
+        <v-menu bottom offset-y>
+          <v-btn slot="activator" flat><v-icon left dark>add_box</v-icon>Add</v-btn>
+          <v-list>
+            <v-list-tile @click="addAccomodationDialog = true">
+              <v-icon style="margin-right: 10px" dark>local_hotel</v-icon><v-list-tile-title>Accommodation</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile @click="addAttractionDialog = true">
+              <v-icon style="margin-right: 10px" dark>favorite</v-icon><v-list-tile-title>Attractions</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile @click="addRestaurantDialog = true">
+              <v-icon style="margin-right: 10px" dark>restaurant</v-icon><v-list-tile-title>Restaurants</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
         <v-btn @click="loginDialog = true" flat><v-icon left dark>input</v-icon>Login</v-btn>
         <v-btn @click="signUpDialog = true" flat><v-icon left dark>launch</v-icon>Sign Up</v-btn>
       </v-toolbar-items>
@@ -53,7 +67,7 @@
             justify-center
             class="white--text"
           >
-            <img :src="require('@/assets/logo.png')" alt="Vuetify.js">
+            <img :src="require('@/assets/logo.png')" height="150px" alt="Vuetify.js">
             <h1 class="white--text mb-2 display-1 text-xs-center">Tour Assist</h1>
             <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
             <v-btn
@@ -582,8 +596,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Cancel</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Log In</v-btn>
+          <v-btn color="primary" flat @click.native="signUpDialog = false">Cancel</v-btn>
+          <v-btn color="primary" flat @click.native="signUpDialog = false">Log In</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -613,8 +627,169 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Cancel</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Sign Up</v-btn>
+          <v-btn color="primary" flat @click.native="signUpDialog = false">Cancel</v-btn>
+          <v-btn color="primary" flat @click.native="signUpDialog = false">Sign Up</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="addAttractionDialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Add New Attraction</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Name" hint="Example: Burj Khalifa" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="City" hint="Example: Dubai" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Country" hint="Example: UAE" required></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click.native="addAttractionDialog = false">Close</v-btn>
+          <v-btn color="primary" flat @click.native="addAttractionDialog = false">Add</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="addRestaurantDialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Add New Restaurant</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Name" hint="Example: Salt N Pepper" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="City" hint="Example: London" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Country" hint="Example: UK" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-select
+                  :items="cuisine"
+                  label="Select Cuisine"
+                  single-line
+                ></v-select>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click.native="addRestaurantDialog = false">Close</v-btn>
+          <v-btn color="primary" flat @click.native="addRestaurantDialog = false">Add</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="addAccomodationDialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Add New Accomodation</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Name" hint="Example: Pearl Continental" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="City" hint="Example: Lahore" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Country" hint="Example: PK" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-text-field
+                  name="input"
+                  label="Price"
+                  id="price"
+                  mask="#"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-select
+                  :items="accomodationTypes"
+                  v-model="e1"
+                  label="Select Type"
+                  single-line
+                ></v-select>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs12>
+                <v-expansion-panel expand>
+                  <v-expansion-panel-content>
+                    <div slot="header">Features</div>
+                    <v-card>
+                      <v-container>
+                        <v-layout row wrap>
+                          <v-flex xs12>
+                            <v-checkbox
+                              label="Pool"
+                              value="Pool"
+                              hide-details
+                            ></v-checkbox>
+                          </v-flex>
+                          <v-flex xs12>
+                            <v-checkbox
+                              label="Spa"
+                              value="Spa"
+                              hide-details
+                            ></v-checkbox>
+                          </v-flex>
+                          <v-flex xs12>
+                            <v-checkbox
+                              label="WiFi"
+                              value="WiFi"
+                              hide-details
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                      </v-container>
+                    </v-card>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click.native="addAccomodationDialog = false">Close</v-btn>
+          <v-btn color="primary" flat @click.native="addAccomodationDialog = false">Login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -807,6 +982,11 @@ export default {
       loginDialog: false,
       signUpDialog: false,
       search: '',
+      addAttractionDialog: false,
+      addRestaurantDialog: false,
+      addAccomodationDialog: false,
+      accomodationTypes: ['Hotel', 'Rental House'],
+      cuisine: ['Italian', 'Thai', 'Japanese'],
       restaurantFilters: {
         cuisine: [],
         features: []
