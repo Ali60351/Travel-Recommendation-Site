@@ -261,78 +261,82 @@
                 <v-expansion-panel-content>
                   <div slot="header">Cuisine</div>
                   <v-card>
-                    <v-layout row wrap>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="Thai"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="Thai"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="Japanese"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="Japanese"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="Turkish"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="Turkish"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="Italian"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="Italian"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="French"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="French"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="SE Asian"
-                          v-model="restaurantFilters.cuisine"
-                          @change="filterResults"
-                          value="SE Asian"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                    </v-layout>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Thai"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="Thai"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Japanese"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="Japanese"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Turkish"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="Turkish"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Italian"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="Italian"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="French"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="French"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="SE Asian"
+                            v-model="restaurantFilters.cuisine"
+                            @change="filterResults"
+                            value="SE Asian"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
                   </v-card>
                 </v-expansion-panel-content>
                 <v-expansion-panel-content>
                   <div slot="header">Features</div>
                   <v-card>
-                    <v-layout row wrap>
-                      <v-flex xs12 sm6 md4 lg3 xl2>
-                        <v-checkbox
-                          label="Delivery"
-                          v-model="restaurantFilters.features"
-                          @change="filterResults"
-                          value="Delivery"
-                          hide-details
-                        ></v-checkbox>
-                      </v-flex>
-                    </v-layout>
+                    <v-container>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6 md4 lg3 xl2>
+                          <v-checkbox
+                            label="Delivery"
+                            v-model="restaurantFilters.features"
+                            @change="filterResults"
+                            value="Delivery"
+                            hide-details
+                          ></v-checkbox>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
                   </v-card>
                 </v-expansion-panel-content>
               </v-expansion-panel>
