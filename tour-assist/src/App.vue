@@ -564,58 +564,17 @@
     </v-content>
     <v-dialog v-model="loginDialog" max-width="290">
       <v-card>
-        <v-card-title class="headline">Use Google's location service?</v-card-title>
-        <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click.native="loginDialog = false">Disagree</v-btn>
-          <v-btn color="green darken-1" flat="flat" @click.native="loginDialog = false">Agree</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="signUpDialog" max-width="500">
-      <v-card>
         <v-card-title>
-          <span class="headline">User Profile</span>
+          <span class="headline">Login</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal first name" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field
-                  label="Legal last name"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-flex>
               <v-flex xs12>
-                <v-text-field label="Email" required></v-text-field>
+                <v-text-field label="Username or Email" required></v-text-field>
               </v-flex>
               <v-flex xs12>
                 <v-text-field label="Password" type="password" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  label="Age"
-                  required
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                ></v-select>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  label="Interests"
-                  multiple
-                  autocomplete
-                  chips
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                ></v-select>
               </v-flex>
             </v-layout>
           </v-container>
@@ -623,8 +582,39 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Save</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Cancel</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Log In</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="signUpDialog" max-width="500">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Sign Up</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field label="Username" required></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field label="Email" required></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field label="Password" type="password" required></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field label="Repeat Password" type="password" required></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Cancel</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="signUpDialog = false">Sign Up</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
