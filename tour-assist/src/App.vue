@@ -186,7 +186,7 @@
                       <v-icon class="blue--text text--lighten-2">email</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>ali60351@tourassist.com</v-list-tile-title>
+                      <v-btn color="primary" href="mailto:mail@example.org">Email</v-btn>
                     </v-list-tile-content>
                   </v-list-tile>
                 </v-list>
