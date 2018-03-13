@@ -144,6 +144,22 @@
         </v-parallax>
       </section>
       <section>
+        <v-layout row wrap>
+          <v-flex @click="onClickAttractions" class="quickLink" id="attractionLink" xs12 sm3>
+            <p>Attractions<br/><v-icon>details</v-icon></p>
+          </v-flex>
+          <v-flex @click="onClickRestaurants" class="quickLink" id="restaurantLink" xs12 sm3>
+            <p>Restaurants<br/><v-icon>details</v-icon></p>
+          </v-flex>
+          <v-flex @click="onClickAccommodation" class="quickLink" id="accommodationLink" xs12 sm3>
+            <p>Accommodations<br/><v-icon>details</v-icon></p>
+          </v-flex>
+          <v-flex @click="onClickTravel" class="quickLink" id="travelLink" xs12 sm3>
+            <p>Travel<br/><v-icon>details</v-icon></p>
+          </v-flex>
+        </v-layout>
+      </section>
+      <section>
         <v-container grid-list-xl>
           <v-layout row wrap justify-center class="my-5">
             <v-flex xs12 sm4>
@@ -716,7 +732,7 @@
             <v-layout row wrap>
               <v-flex xs12>
                 <v-select
-                  :items="accomodationTypes"
+                  :items="accommodationTypes"
                   v-model="e1"
                   label="Select Type"
                   single-line
@@ -798,8 +814,8 @@ export default {
         },
         {
           icon: 'restaurant',
-          title: 'Resturants',
-          onClick: this.onClickResturants,
+          title: 'Restaurants',
+          onClick: this.onClickRestaurants,
           disabled: false
         },
         {
@@ -967,7 +983,7 @@ export default {
       addAttractionDialog: false,
       addRestaurantDialog: false,
       addAccomodationDialog: false,
-      accomodationTypes: ['Hotel', 'Rental House'],
+      accommodationTypes: ['Hotel', 'Rental House'],
       cuisine: ['Italian', 'Thai', 'Japanese'],
       restaurantFilters: {
         cuisine: [],
@@ -1013,7 +1029,7 @@ export default {
       this.items[4].disabled = false;
       this.filteredAttractions = this.attractions;
     },
-    onClickResturants: function () {
+    onClickRestaurants: function () {
       this.isHome = false;
       this.isAttractions = false;
       this.isRestaurants = true;
@@ -1167,4 +1183,46 @@ export default {
     background-size: cover;
     background-position: 50% 50%;
   }
+
+  .quickLink {
+    min-height: 400px;
+    text-align: center;
+    display: table-cell;
+    line-height: 200px;
+    font-size: 1.5vw;
+    transition: box-shadow 0.4s;
+  }
+
+  .quickLink:hover {
+    box-shadow: inset 0px 0px 30px 5px #7DB8DE;
+    cursor: pointer;
+  }
+
+  #attractionLink {
+    background-image: url('./assets/1b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+            
+  #restaurantLink {
+    background-image: url('./assets/2b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+          
+  #accommodationLink {
+    background-image: url('./assets/3b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+          
+  #travelLink {
+    background-image: url('./assets/5b.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }  
 </style>
