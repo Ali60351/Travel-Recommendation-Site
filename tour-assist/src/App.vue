@@ -213,6 +213,7 @@
       </section>
     </v-content>
     <v-content class="attractions" v-if="isAttractions">
+      <vue-particles :hoverEffect="false" :clickEffect="false" color="#fff"></vue-particles>
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -250,6 +251,7 @@
       </section>
     </v-content>
     <v-content class="restaurants" v-if="isRestaurants">
+      <vue-particles :hoverEffect="false" :clickEffect="false" color="#fff"></vue-particles>
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -357,10 +359,15 @@
                 <v-card-title primary-title>
                   <div class="text-xs-left">
                     <div class="headline">{{item.title}}</div>
+                    <br/>
                     <span class="grey--text">{{item.location}}</span>
                     <br/>
                     <span class="grey--text" v-for="cuisine in item.cuisine" :key="cuisine">{{cuisine + ' '}}</span>
+                    <br/>
+                    <br/>
+                    <v-icon v-for="i in item.rating" :key="i">star</v-icon>
                   </div>
+                  
                 </v-card-title>
                 <v-card-actions>
                   <v-btn flat>Share</v-btn>
@@ -374,6 +381,7 @@
       </section>
     </v-content>
     <v-content class="accommodation" v-if="isAccommodation">
+      <vue-particles :hoverEffect="false" :clickEffect="false" color="#fff"></vue-particles>
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -435,6 +443,9 @@
                     <div class="headline">{{item.title}}</div>
                     <div class="grey--text">{{item.location}}</div>
                     <span class="grey--text">{{'Price: Rs' + item.price}}</span>
+                    <br/>
+                    <br/>
+                    <v-icon v-for="i in item.rating" :key="i">star</v-icon>
                   </div>
                 </v-card-title>
                 <v-card-actions>
@@ -449,6 +460,7 @@
       </section>
     </v-content>
     <v-content class="travel" v-if="isTravel">
+      <vue-particles :hoverEffect="false" :clickEffect="false" color="#fff"></vue-particles>
       <section>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -575,7 +587,7 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Username or Email" required></v-text-field>
               </v-flex>
@@ -600,7 +612,7 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Username" required></v-text-field>
               </v-flex>
@@ -631,17 +643,17 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Name" hint="Example: Burj Khalifa" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="City" hint="Example: Dubai" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Country" hint="Example: UAE" required></v-text-field>
               </v-flex>
@@ -663,19 +675,25 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Name" hint="Example: Salt N Pepper" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="City" hint="Example: London" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Country" hint="Example: UK" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <p>Select Rating</p>
+                <star-rating text-class="starLabel" active-color="#7DB8DE" inactive-color="#333" :star-size="20" :increment="0.5"></star-rating>
               </v-flex>
             </v-layout>
             <v-layout row wrap>
@@ -704,19 +722,25 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Name" hint="Example: Pearl Continental" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="City" hint="Example: Lahore" required></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs12>
                 <v-text-field label="Country" hint="Example: PK" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <p>Select Rating</p>
+                <star-rating text-class="starLabel" active-color="#7DB8DE" inactive-color="#333" :star-size="20" :increment="0.5"></star-rating>
               </v-flex>
             </v-layout>
             <v-layout row wrap>
@@ -869,6 +893,7 @@ export default {
           title: 'Pai Thai',
           location: 'Dubai, United Arab Emirates (UAE)',
           features: ['Delivery'],
+          rating: 4,
           cuisine: ['Thai', 'SE Asian'],
           image: require('@/assets/paithai.jpg')
         },
@@ -876,6 +901,7 @@ export default {
           title: 'Nusr-Et',
           location: 'Dubai, United Arab Emirates (UAE)',
           features: [],
+          rating: 5,
           cuisine: ['Turkish'],
           image: require('@/assets/nusret.jpg')
         },
@@ -883,6 +909,7 @@ export default {
           title: 'Zuma',
           location: 'Dubai, United Arab Emirates (UAE)',
           features: [],
+          rating: 4,
           cuisine: ['Japanese'],
           image: require('@/assets/zuma.jpg')
         },
@@ -890,6 +917,7 @@ export default {
           title: 'Solo Bistronomia & Vino Bar',
           location: 'Dubai, United Arab Emirates (UAE)',
           features: [],
+          rating: 5,
           cuisine: ['Italian'],
           image: require('@/assets/solo.jpg')
         },
@@ -897,6 +925,7 @@ export default {
           title: 'La Petite Maison',
           location: 'Dubai, United Arab Emirates (UAE)',
           features: [],
+          rating: 4,
           cuisine: ['French'],
           image: require('@/assets/lapetit.jpg')
         }
@@ -905,6 +934,7 @@ export default {
         {
           title: 'Holiday Inn Express Dubai Airport',
           location: 'Dubai, United Arab Emirates (UAE)',
+          rating: 4,
           features: [],
           price: 8500,
           image: require('@/assets/Holiday_Inn.png')
@@ -912,6 +942,7 @@ export default {
         {
           title: 'Crowne Plaza Dubai',
           location: 'Dubai, United Arab Emirates (UAE)',
+          rating: 4,
           features: ['WiFi'],
           price: 16000,
           image: require('@/assets/Crowne_Plaza_Dubai.png')
@@ -919,6 +950,7 @@ export default {
         {
           title: 'Hawthorn Suites',
           location: 'Dubai, United Arab Emirates (UAE)',
+          rating: 5,
           features: [],
           price: 17000,
           image: require('@/assets/Hawthorn_Suites.png')
@@ -926,6 +958,7 @@ export default {
         {
           title: 'Melia Dubai Hotel',
           location: 'Dubai, United Arab Emirates (UAE)',
+          rating: 4,
           features: [],
           price: 11000,
           image: require('@/assets/Melia_Dubai_Hotel.png')
@@ -933,6 +966,7 @@ export default {
         {
           title: 'Gloria Hotel',
           location: 'Dubai, United Arab Emirates (UAE)',
+          rating: 5,
           features: [],
           price: 19000,
           image: require('@/assets/Gloria_Hotel.png')
@@ -1161,6 +1195,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    z-index: 2;
   }
 
   .restaurants {
@@ -1168,6 +1203,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    z-index: 2;
   }
 
   .accommodation {
@@ -1175,6 +1211,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    z-index: 2;
   }
 
   .travel {
@@ -1182,6 +1219,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    z-index: 2;
   }
 
   .quickLink {
@@ -1224,5 +1262,20 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-  }  
+  }
+
+  #particles-js {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .starLabel {
+    display: none;
+  }
 </style>

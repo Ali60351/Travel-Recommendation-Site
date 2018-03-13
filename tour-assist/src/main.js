@@ -7,7 +7,13 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import Vuetify from 'vuetify';
+import VueParticles from 'vue-particles';
 import 'vuetify/dist/vuetify.min.css';
+import StarRating from 'vue-star-rating';
+
+Vue.use(VueParticles);
+
+Vue.component('star-rating', StarRating);
 
 Vue.use(Vuetify, { theme: {
   primary: '#7DB8DE',
