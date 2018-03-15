@@ -31,13 +31,13 @@
       :clipped-left="clipped"
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+      <v-btn class="hidden-sm-and-down" icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
+      <v-btn class="hidden-sm-and-down" icon @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title class="hidden-sm-and-down" v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-menu bottom offset-y>
@@ -1227,7 +1227,7 @@ export default {
     text-align: center;
     display: table-cell;
     line-height: 200px;
-    font-size: 1.5vw;
+    font-size: 1.35em;
     transition: box-shadow 0.4s;
   }
 
@@ -1277,5 +1277,11 @@ export default {
 
   .starLabel {
     display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #particles-js {
+        display: none;
+    }
   }
 </style>
